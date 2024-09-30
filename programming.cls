@@ -603,23 +603,6 @@
       breaklines=true}
     \setmintedinline{fontsize=\normalsize}}
 
-% XXX: 2021-07-15: require v2 until everything is upgraded
-\@ifpackagelater{scrbase}{2017/09/06} % gues TL from KOMA
-  {\AtEndPreamble{\RequirePackage{siunitx}[=v2]}} % syntax 2017+ ok
-  {\AtEndPreamble{\RequirePackage{siunitx}}} % not needed/possible <=2016 anyway
-\AfterPackage{siunitx}{%
-  \sisetup{
-    binary-units,
-    detect-all,
-    free-standing-units,
-    space-before-unit,
-    unit-optional-argument,
-    parse-units = false}
-  \AtEndPreamble{
-    % If siunitx support pgf-setting, use it.
-    \@ifpackageloaded{pgf}{\csuse{SendSettingsToPgf}}{}
-    \addto\extrasenglish{\sisetup{locale = US}}}}
-
 \PassOptionsToPackage{style=numeric,sortcites}{biblatex}
 \AfterPackage{biblatex}{
   \setcounter{biburllcpenalty}{7000}
